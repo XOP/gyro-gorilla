@@ -1,0 +1,26 @@
+{
+  "name": "gyro-gorilla",
+  "version": "1.0.0",
+  "description": "",
+  "author": "Evgeny Khoroshilov <stewiekillsloiss@gmail.com>",
+  "private": true,
+  "main": "index.js",
+  "scripts": {
+
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/XOP/gyro-gorilla.git"
+  },
+  "keywords": [
+    "gyroscope",
+    "demo"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/XOP/gyro-gorilla/issues"
+  },
+  "homepage": "https://github.com/XOP/gyro-gorilla#readme",
+  "dependencies": {
+  }
+}
