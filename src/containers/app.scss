@@ -1,0 +1,26 @@
+:root {
+    .gg-wrapper {
+        display: flex;
+
+        flex-flow: column;
+        justify-content: center;
+
+        height: 100%;
+    }
+
+    .gg-main {
+        flex: 0 1 auto;
+    }
+
+    .gg-header {
+        margin-bottom: 2rem;
+    }
+
+    .gg-content {
+        text-align: center;
+    }
+
+    .gg-control {
+        font-size: 2rem;
+    }
+}

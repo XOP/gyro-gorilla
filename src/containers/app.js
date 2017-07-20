@@ -1,6 +1,6 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 
-import Splash from '../components/splash';
+import './app.scss';
 
 class App extends Component {
     constructor(props) {
@@ -12,16 +12,24 @@ class App extends Component {
 
     render() {
         return (
-            <div className="container">
-                <div className="columns">
-                    <div className="column is-half is-offset-one-quarter-desktop">
+            <div className="hero is-primary gg-wrapper">
+                <section className="gg-main">
 
-                        <Splash>
+                    <div className="gg-header">
+                        <h1 className="title is-2 has-text-centered">
                             Gyro Gorilla
-                        </Splash>
-
+                        </h1>
                     </div>
-                </div>
+
+                    <div className="gg-content">
+                        <div className="button is-primary is-inverted is-outlined gg-control">
+                            <span className="icon">
+                                <i className="fa fa-volume-up" />
+                            </span>
+                        </div>
+                    </div>
+
+                </section>
             </div>
         );
     }
