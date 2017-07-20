@@ -1,18 +1,50 @@
 import React, { Component } from 'react';
 
+import cls from 'classnames';
+
 import './app.scss';
 
 class App extends Component {
     constructor(props) {
         super(props);
 
+        this.handlePlayControl = this.handlePlayControl.bind(this);
+
         this.state = {
+            isAudioPlayed: false
         };
     }
 
+    componentDidMount() {
+        this.Audio.onplay = () => {
+            this.setState({
+                isAudioPlayed: true
+            });
+        };
+
+        this.Audio.onended = () => {
+            this.setState({
+                isAudioPlayed: false
+            });
+        };
+    }
+
+    handlePlayControl() {
+        if (this.state.isAudioPlayed) {
+            return;
+        }
+
+        this.Audio.play();
+    }
+
     render() {
+        const soundRoar = require('../assets/gorilla.mp3');
+
         return (
-            <div className="hero is-primary gg-wrapper">
+            <div className={cls('gg-wrapper hero', {
+                'is-primary': !this.state.isAudioPlayed,
+                'is-warning': this.state.isAudioPlayed
+            })}>
                 <section className="gg-main">
 
                     <div className="gg-header">
@@ -22,9 +54,25 @@ class App extends Component {
                     </div>
 
                     <div className="gg-content">
-                        <div className="button is-primary is-inverted is-outlined gg-control">
+                        <div className="gg-sound">
+                            <audio ref={(audio) => { this.Audio = audio; }}>
+                                <source src={soundRoar} type="audio/mp3" />
+                            </audio>
+                        </div>
+
+                        <div
+                            className={cls('gg-control button is-inverted is-outlined', {
+                                'is-primary': !this.state.isAudioPlayed,
+                                'is-warning': this.state.isAudioPlayed
+                            })}
+                            onClick={this.handlePlayControl}
+                        >
                             <span className="icon">
-                                <i className="fa fa-volume-up" />
+                                {
+                                    this.state.isAudioPlayed ?
+                                        <i className="fa fa-volume-up" /> :
+                                        <i className="fa fa-play" />
+                                }
                             </span>
                         </div>
                     </div>

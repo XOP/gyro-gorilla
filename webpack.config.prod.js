@@ -75,7 +75,7 @@ export default {
   module: {
     rules: [
       {test: /\.jsx?$/, exclude: /node_modules/, loader: 'babel-loader'},
-      {test: /\.eot(\?v=\d+.\d+.\d+)?$/, loader: 'url-loader?name=[name].[ext]'},
+      {test: /(\.eot(\?v=\d+.\d+.\d+)?|\.mp3)$/, loader: 'url-loader?name=[name].[ext]'},
       {test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: 'url-loader?limit=10000&mimetype=application/font-woff&name=[name].[ext]'},
       {test: /\.[ot]tf(\?v=\d+.\d+.\d+)?$/, loader: 'url-loader?limit=10000&mimetype=application/octet-stream&name=[name].[ext]'},
       {test: /\.svg(\?v=\d+.\d+.\d+)?$/, loader: 'url-loader?limit=10000&mimetype=image/svg+xml&name=[name].[ext]'},
