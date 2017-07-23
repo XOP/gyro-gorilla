@@ -70,8 +70,8 @@ class App extends Component {
                             <span className="icon">
                                 {
                                     this.state.isAudioPlayed ?
-                                        <i className="fa fa-volume-up" /> :
-                                        <i className="fa fa-play" />
+                                        <i className="icon icon--volume-high" /> :
+                                        <i className="icon icon--volume" />
                                 }
                             </span>
                         </div>

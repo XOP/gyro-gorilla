@@ -7,7 +7,6 @@ import App from './containers/app';
 
 require('./offline.html');
 require('./client.js');
-require('./sw.js');
 
 require('./favicon.ico');
 

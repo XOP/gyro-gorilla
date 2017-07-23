@@ -1,5 +1,7 @@
 import webpack from 'webpack';
+
 import HtmlWebpackPlugin from 'html-webpack-plugin';
+
 import autoprefixer from 'autoprefixer';
 import path from 'path';
 
@@ -7,7 +9,9 @@ export default {
     resolve: {
         extensions: ['*', '.js', '.jsx', '.json']
     },
+
     devtool: 'eval-source-map', // more info:https://webpack.github.io/docs/build-performance.html#sourcemaps and https://webpack.github.io/docs/configuration.html#devtool
+
     entry: [
         // must be first entry to properly set public path
         './src/webpack-public-path',
@@ -15,12 +19,15 @@ export default {
         'webpack-hot-middleware/client?reload=true',
         path.resolve(__dirname, 'src/index.js') // Defining path seems necessary for this to work consistently on Windows machines.
     ],
+
     target: 'web', // necessary per https://webpack.github.io/docs/testing.html#compile-and-test
+
     output: {
         path: path.resolve(__dirname, 'dist'), // Note: Physical files are only output by the production build task `npm run build`.
         publicPath: '/',
         filename: 'bundle.js'
     },
+
     plugins: [
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': JSON.stringify('development'), // Tells React to build in either dev or prod modes. https://facebook.github.io/react/downloads.html (See bottom)
@@ -42,19 +49,19 @@ export default {
             noInfo: true, // set to false to see a list of every file being bundled.
             options: {
                 sassLoader: {
-                    includePaths: [path.resolve(__dirname, 'src', 'scss')]
+                    includePaths: [path.resolve(__dirname, 'src')]
                 },
                 context: '/',
                 postcss: () => [autoprefixer],
             }
         })
     ],
+
     module: {
         rules: [
             {test: /offline.html$/, loader: 'url-loader?mimetype=text/html&name=[name].[ext]'},
 
             {test: /client.js$/, loader: 'url-loader?mimetype=text/javascript&name=[name].[ext]!babel-loader'},
-            {test: /sw.js$/, loader: 'url-loader?mimetype=application/javascript&name=[name].[ext]!babel-loader'},
 
             {test: /\.jsx?$/, exclude: /node_modules/, loaders: ['babel-loader']},
             {test: /\.eot(\?v=\d+.\d+.\d+)?$/, loader: 'file-loader'},
