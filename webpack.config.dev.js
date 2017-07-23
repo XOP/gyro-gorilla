@@ -76,7 +76,7 @@ export default {
             {test: /\.ico$/, loader: 'file-loader?name=[name].[ext]'},
             {
                 test: /(\.css|\.scss|\.sass)$/,
-                loaders: ['style-loader', 'css-loader?sourceMap', 'postcss-loader', 'sass-loader?sourceMap']
+                loaders: ['style-loader', 'css-loader?sourceMap', 'postcss-loader', 'resolve-url-loader', 'sass-loader?sourceMap']
             }
         ]
     }

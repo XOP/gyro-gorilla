@@ -10,9 +10,9 @@ import SWPrecacheWebpackPlugin from 'sw-precache-webpack-plugin';
 import autoprefixer from 'autoprefixer';
 import path from 'path';
 
-
-const PUBLIC_PATH = 'https://gyro-gorilla.surge.sh/';  // webpack needs the trailing slash for output.publicPath
-
+const PUBLIC_PATH = process.env.TESTBUILD ?
+    '/' :
+    'https://gyro-gorilla.surge.sh/';  // webpack needs the trailing slash for output.publicPath
 
 const GLOBALS = {
     'process.env.NODE_ENV': JSON.stringify('production'),
@@ -76,7 +76,9 @@ export default {
             noInfo: true, // set to false to see a list of every file being bundled.
             options: {
                 sassLoader: {
-                    includePaths: [path.resolve(__dirname, 'src', 'scss')]
+                    includePaths: [
+                        path.resolve(__dirname, 'src')
+                    ]
                 },
                 context: '/',
                 postcss: () => [autoprefixer],
@@ -143,7 +145,7 @@ export default {
             },
             {
                 test: /(\.css|\.scss|\.sass)$/,
-                loader: ExtractTextPlugin.extract('css-loader?sourceMap!postcss-loader!sass-loader?sourceMap')
+                loader: ExtractTextPlugin.extract('css-loader?sourceMap!postcss-loader!resolve-url-loader!sass-loader?sourceMap')
             }
         ]
     }
